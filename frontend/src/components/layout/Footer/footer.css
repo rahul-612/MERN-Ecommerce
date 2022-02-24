@@ -1,0 +1,95 @@
+.footer{
+    margin-top: 10vmax;
+    /* padding: 2vmax; */
+    background-color: rgb(34, 33, 33);
+    color: white;
+    align-items: center;
+    width: 100vw;
+    height: 12vh;
+    /* justify-content: space-between ; */
+    border-top: solid .2rem #fff;
+    margin-top: auto !important;
+  }
+  
+  .leftFooter {
+    width: 20%;
+    align-items: center;
+    /* background-color: rgb(167, 106, 106); */
+  }
+  .leftFooter > h4 {
+    font-family: "Roboto";
+    font-size: 1vmax;
+  }
+
+  .leftFooter > img {
+    width: 6vmax;
+    margin: .5vmax;
+    cursor: pointer;
+  }
+  
+  .midFooter {
+    width: 60%;
+    /* background-color: rgb(227, 230, 86); */
+    text-align: center;
+    
+  }
+  
+  .midFooter > h1 {
+    font-size: 2vmax;
+    font-family: "Roboto";
+    color: #eb4034;
+  }
+  .midFooter > p {
+    max-width: 60%;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 1vmax auto;
+    font-size: 1.5rem;
+  }
+  
+  .rightFooter {
+    width: 20%;
+/* background-color: rgb(106, 136, 88); */
+    align-items: center;
+  }
+  .rightFooter > h4 {
+    font-family: "Roboto";
+    font-size: 1.4vmax;
+    text-decoration: underline;
+  }
+  .rightFooter > a {
+    text-decoration: none;
+    font-size: 1.3vmax;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: white;
+    transition: all 0.5s;
+    margin: 0.5vmax;
+  }
+  
+ .insta:hover {
+    color: #eb4034;
+  }
+ 
+  .linkedIn:hover,.fb:hover {
+    color: #3f49df;
+  }
+
+  @media screen and (max-width: 600px){
+    /* .leftFooter{
+      transform: translateY(3.8vh);
+    } */
+    .midFooter{
+      /* transform: translateX(2.5rem); */
+      flex-direction: column;
+    }
+    .midFooter>p{
+      font-size: 1.1vh;
+    }
+    .copyright{
+      transform: translateY(-2vh);
+    }
+    .rightFooter{
+      transform: translate(-2vw,3.4vh);
+      width: 28vw;
+    }
+    
+  }
