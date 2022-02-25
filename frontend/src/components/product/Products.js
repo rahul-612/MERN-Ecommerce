@@ -35,7 +35,7 @@ const Products = ({ match }) => {
   const {
     products,
     loading,
-    error,
+    
     productsCount,
     resultPerPage,
     filteredProductsCount,
@@ -46,22 +46,16 @@ const Products = ({ match }) => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
-  function valuetext(price) {
-    return `${price}°C`;
-  }
+  
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
   let count = filteredProductsCount;
 
   useEffect(() => {
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-
-    dispatch(getProduct(keyword, currentPage, price,category,error,ratings));
-  }, [dispatch, keyword, currentPage, price,category,error,ratings]);
+  
+    dispatch(getProduct(keyword, currentPage, price,category,ratings));
+  }, [dispatch, keyword, currentPage, price,category,ratings,alert]);
 
   return (
     <>
