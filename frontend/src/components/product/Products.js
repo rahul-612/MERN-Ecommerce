@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./products.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getProduct,clearErrors } from "../../actions/productAction";
+import { getProduct, clearErrors } from "../../actions/productAction";
 import Loader from "../Loader/Loader.js";
 import ProductCard from "../home/ProductCard";
 import Pagination from "react-js-pagination";
-import Slider from '@mui/material/Slider';
+import Slider from "@mui/material/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
-
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+  ErrorPanel,
+} from "@speechly/react-ui";
+import { useSpeechContext } from "@speechly/react-client";
+import { useHistory } from "react-router-dom";
 
 const categories = [
   "Laptop",
@@ -23,6 +29,8 @@ const categories = [
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
+  const { segment } = useSpeechContext();
+  const history = useHistory();
 
   const alert = useAlert();
 
@@ -35,7 +43,7 @@ const Products = ({ match }) => {
   const {
     products,
     loading,
-    
+
     productsCount,
     resultPerPage,
     filteredProductsCount,
@@ -46,16 +54,72 @@ const Products = ({ match }) => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
-  
+
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
   let count = filteredProductsCount;
 
   useEffect(() => {
-  
-    dispatch(getProduct(keyword, currentPage, price,category,ratings));
-  }, [dispatch, keyword, currentPage, price,category,ratings,alert]);
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  }, [dispatch, keyword, currentPage, price, category, ratings, alert]);
+
+  useEffect(() => {
+    if (segment) {
+      if (segment.isFinal && segment.intent.intent === "show") {
+        segment.entities.forEach((e) => {
+          switch (e.type) {
+            case "category":
+              if (
+                e.value.toLowerCase() === "laptops" ||
+                e.value.toLowerCase() === "laptop"
+              ) {
+                setCategory("Laptop");
+              } else if (
+                e.value.toLowerCase() === "footwears" ||
+                e.value.toLowerCase() === "footwear"
+              ) {
+                setCategory("Footwear");
+              } else if (
+                e.value.toLowerCase() === "bottoms" ||
+                e.value.toLowerCase() === "bottom"
+              ) {
+                setCategory("Bottoms");
+              } else if (
+                e.value.toLowerCase() === "tops" ||
+                e.value.toLowerCase() === "top"
+              ) {
+                setCategory("Tops");
+              } else if (
+                e.value.toLowerCase() === "attires" ||
+                e.value.toLowerCase() === "attire"
+              ) {
+                setCategory("Attire");
+              } else if (
+                e.value.toLowerCase() === "cameras" ||
+                e.value.toLowerCase() === "camera"
+              ) {
+                setCategory("Camera");
+              } else if (
+                e.value.toLowerCase() === "smartphones" ||
+                e.value.toLowerCase() === "smartphone" ||
+                e.value.toLowerCase() === "phones" ||
+                e.value.toLowerCase() === "phone" ||
+                e.value.toLowerCase() === "mobiles" ||
+                e.value.toLowerCase() === "mobile"
+              ) {
+                setCategory("SmartPhones");
+              }
+
+              break;
+            case "brand":
+              history.push(`/products/${e.value.toLowerCase()}`);
+              break;
+          }
+        });
+      }
+    }
+  }, [segment]);
 
   return (
     <>
@@ -64,7 +128,10 @@ const Products = ({ match }) => {
       ) : (
         <>
           <MetaData title="PRODUCTS -- ECOMMERCE" />
-          <h2 className="productsHeading">Products</h2>
+          <h3 className="speechlyText">
+            {segment && segment.words.map((w) => w.value).join(" ")}
+          </h3>
+          <h2 className="productsHeading"> Products</h2>
 
           <div className="products">
             {products &&
@@ -72,7 +139,10 @@ const Products = ({ match }) => {
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
-
+          <PushToTalkButtonContainer>
+            <PushToTalkButton />
+            <ErrorPanel />
+          </PushToTalkButtonContainer>
           <div className="filterBox">
             <Typography>Price</Typography>
             <Slider
@@ -83,9 +153,8 @@ const Products = ({ match }) => {
               aria-labelledby="range-slider"
               min={0}
               max={250000}
-              
             />
-            
+
             <Typography>Categories</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (

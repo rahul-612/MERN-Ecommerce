@@ -16,6 +16,37 @@
   font-style: italic;
 }
 
+/* logo animation */
+.SiteLogo>h1{
+  color: #484848;
+  font-weight: bold;
+  font-family: monospace;
+  letter-spacing: 7px;
+  cursor: pointer
+}
+.SiteLogo>h1 span{
+  transition: .5s linear
+}
+.SiteLogo>h1:hover span:nth-child(1){
+  margin-right: 5px
+}
+.SiteLogo>h1:hover span:nth-child(1):after{
+  content: "";
+}
+.SiteLogo>h1:hover span:nth-child(2){
+  margin-left: 30px
+}
+.SiteLogo>h1:hover span{
+  color: black;
+  /* text-shadow: 0 0 10px #fff,
+               0 0 20px #fff, 
+               0 0 40px #fff; */
+  text-shadow: 0 0 10px black,
+               0 0 20px black,
+               0 0 40px black
+}
+
+/* end logo animation */
 .leftHead{
    
     width: 50%;

@@ -11,8 +11,17 @@ import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logout } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
+import ChatIcon from '@mui/icons-material/Chat';
+import { useGoogleLogout } from 'react-google-login'
 
 const UserOptions = ({ user }) => {
+
+  const { signOut, loaded } = useGoogleLogout({
+    clientId:"25285888699-qrhehvheurj30nu939f0ju44nv61gqm4.apps.googleusercontent.com",
+    cookiePolicy:"single_host_origin",
+    
+  })
+
   const { cartItems } = useSelector((state) => state.cart);
 
   const [open, setOpen] = useState(false);
@@ -40,7 +49,15 @@ const UserOptions = ({ user }) => {
       icon: <DashboardIcon />,
       name: "Dashboard",
       func: dashboard,
+    },{
+      icon: <ChatIcon />,
+      name: "Support",
+      func: support,
     });
+  }
+
+  function support() {
+    history.push("/admin/support");
   }
 
   function dashboard() {
@@ -58,8 +75,10 @@ const UserOptions = ({ user }) => {
   }
   function logoutUser() {
     dispatch(logout());
+    signOut()
     alert.success("Logout Successfully");
   }
+
 
   return (
     <>

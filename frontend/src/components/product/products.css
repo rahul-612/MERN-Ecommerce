@@ -1,3 +1,14 @@
+.speechlyText{
+  /* background: red; */
+  margin: 2vmax auto;
+  width: 40vw;
+  padding: 2vmax;
+  color: rgba(255, 99, 71, 0.725);
+  font: 500 1.5vmax "Roboto";
+  display: inline-block;
+  text-align: center;
+}
+
 .productsHeading {
     margin: 2vmax auto;
     width: 15vw;
@@ -6,8 +17,9 @@
     color: rgba(0, 0, 0, 0.678);
     font: 500 1.5vmax "Roboto";
     text-align: center;
+    display: inline-block;
+    /* background: yellow; */
   }
-  
   .products {
     display: flex;
     flex-wrap: wrap;

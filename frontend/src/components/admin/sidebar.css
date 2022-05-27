@@ -44,3 +44,7 @@
     background-color: #fff !important;
   }
   
+  .adminSideBarHeading{
+    position: relative;
+    left: 2rem;
+  }

@@ -7,6 +7,14 @@ import { getProduct, clearErrors } from '../../actions/productAction';
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../Loader/Loader"
 import {useAlert} from "react-alert"
+import SupportEngine from "./SupportChat/SupportEngine"
+import Carousel from "react-material-ui-carousel";
+import banner1 from "../../images/banner/1.jpg"
+import banner2 from "../../images/banner/2.jpg"
+import banner3 from "../../images/banner/3.jpg"
+import banner4 from "../../images/banner/4.jpg"
+import banner5 from "../../images/banner/5.jpg"
+import banner6 from "../../images/banner/6.jpg"
 
 
 const Home = () => {
@@ -27,6 +35,9 @@ const Home = () => {
         dispatch(getProduct())
     }, [dispatch,error])
 
+
+    let bannerImgs=[banner1,banner2,banner3,banner4,banner5,banner6]
+
     return (
         // isse hum loader bna skte h apne page pr yani jb tk data fetch na hi hojata kuch animation hote rhe
         <>
@@ -34,7 +45,7 @@ const Home = () => {
         <>
             <MetaData title="Ecommerce" />
 
-            <div className="banner">
+            {/* <div className="banner">
                 <p>Welcome to Ecommerce</p>
                 <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
@@ -43,7 +54,27 @@ const Home = () => {
                         Scroll <MouseIcon className="mouseIcon" />
                     </button>
                 </a>
-            </div>
+            </div> */}
+                <Carousel duration={1000}>
+                    {
+                        bannerImgs.map((item,i)=>(
+                            <div className="banner">
+                            <img src={item} key={item} alt={`${i} Slide`} />
+                            <p>Welcome to Ecommerce</p>
+                            {/* <h1>FIND AMAZING PRODUCTS BELOW</h1> */}
+                            {/* <h1>#Time To Shop</h1> */}
+                            <div class="sign">
+      <span class="fast-flicker">#now</span>or<span class="flicker">never</span>
+    </div>
+                            <a className="bannerBtn" href="#container">
+                                <button>
+                                    Scroll <MouseIcon className="mouseIcon" />
+                                </button>
+                            </a>
+                            </div>
+                        ))
+                    }
+                </Carousel>
 
             <h2 className="homeHeading">Featured Products</h2>
 
@@ -58,6 +89,7 @@ const Home = () => {
 
 
             </div>
+            <SupportEngine/>
         </>
         )}
         </>

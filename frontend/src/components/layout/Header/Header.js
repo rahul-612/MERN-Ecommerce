@@ -7,6 +7,7 @@ import Search from "./Search";
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
+
 const Header = () => {
   return (
     <>
@@ -14,9 +15,9 @@ const Header = () => {
       {window.innerWidth>=769?(
         <>
         <div className="leftHead flex">
-          <IconButton>
-            <NavLink to="/" className="SiteLogo">Ecommerce</NavLink>
-          </IconButton>
+          
+            <NavLink to="/" className="SiteLogo"><h1><span>E</span>asy-<span>Bazaar</span></h1></NavLink>
+          
           <ul>
             <li>
               <NavLink exact activeClassName='active_class' className="headLink" to="/">Home</NavLink>

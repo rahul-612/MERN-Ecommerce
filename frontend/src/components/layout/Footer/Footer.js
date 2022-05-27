@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
 
       <div className="midFooter flex">
-        <h1>ECOMMERCE.com</h1>
+        <h1>EBazaar.com</h1>
         <p>High Quality is our first priority</p>
 
         <p className="copyright">Copyrights 2022 &copy; Rahul</p>

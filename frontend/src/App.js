@@ -40,6 +40,7 @@ import ProcessOrder from "./components/admin/ProcessOrder.js";
 import UserList from "./components/admin/UserList.js";
 import UpdateUser from "./components/admin/UpdateUser.js";
 import ProductReviews from "./components/admin/ProductReviews.js";
+import AdminChat from './components/home/SupportChat/SupportWindow/AdminChat';
 import Error from "./components/layout/Not Found/NotFound";
 
 
@@ -119,6 +120,7 @@ const App = () => {
       <ProtectedRoute  exact path="/admin/users" isAdmin={true} component={UserList}/>
       <ProtectedRoute  exact path="/admin/user/:id" isAdmin={true} component={UpdateUser}/>
       <ProtectedRoute  exact path="/admin/reviews" isAdmin={true} component={ProductReviews}/>
+      <ProtectedRoute  exact path="/admin/support" isAdmin={true} component={AdminChat}/>
       <Route component={window.location.pathname==="/process/payment"?null:Error} />
       </Switch>
       <Footer />
