@@ -75,7 +75,6 @@ const EmailForm = props => {
                 </div>
 
                 <form 
-                    onSubmit={e => handleSubmit(e)}
                     style={{ position: 'relative', width: '100%', top: '19.75%' }}
                 >
                     <input 
