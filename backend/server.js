@@ -31,12 +31,12 @@ cloudinary.config({
   });
 
   
-// const server=app.listen(process.env.PORT,()=>{
-//     console.log(`Server is Listening at ${process.env.PORT}`)
-// })
-const server=app.listen(4000,()=>{
-    console.log(`Server is Listening at ${4000}`)
+const server=app.listen(process.env.PORT,()=>{
+    console.log(`Server is Listening at ${process.env.PORT}`)
 })
+// const server=app.listen(4000,()=>{
+//     console.log(`Server is Listening at ${4000}`)
+// })
 
 chatServer(server)
 
