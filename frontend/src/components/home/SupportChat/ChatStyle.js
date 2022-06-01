@@ -1,4 +1,4 @@
-import myPic from "../../../images/my_pic.jpg";
+import logo from "../../../images/logo.png";
 
 export const styles = {
     chatWithMeButton: {
@@ -7,7 +7,7 @@ export const styles = {
         // Border
         borderRadius: '50%',
         // Background 
-        backgroundImage: `url(${myPic})`, 
+        backgroundImage: `url(${logo})`, 
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '84px',
