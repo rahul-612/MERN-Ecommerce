@@ -182,7 +182,7 @@
     .loginForm > div > input,
     .signUpForm > div > input {
       padding: 2.5vmax 5vmax;
-      font: 300 1.7vmax cursive;
+      font-size: 1.7vmax;
     }
   
     .loginForm > div > svg,

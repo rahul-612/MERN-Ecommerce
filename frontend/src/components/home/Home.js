@@ -43,7 +43,7 @@ const Home = () => {
         <>
             {loading?(<Loader/>):(
         <>
-            <MetaData title="Ecommerce" />
+            <MetaData title="E-Bazaar" />
 
             {/* <div className="banner">
                 <p>Welcome to Ecommerce</p>
@@ -60,7 +60,6 @@ const Home = () => {
                         bannerImgs.map((item,i)=>(
                             <div className="banner">
                             <img src={item} key={item} alt={`${i} Slide`} />
-                            <p>Welcome to Ecommerce</p>
                             {/* <h1>FIND AMAZING PRODUCTS BELOW</h1> */}
                             {/* <h1>#Time To Shop</h1> */}
                             <div class="sign">

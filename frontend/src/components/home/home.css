@@ -26,6 +26,7 @@
   
   z-index:100;
 }
+
 /* banner heading */
 .sign {
   position: absolute;
@@ -348,6 +349,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .sign{
+    font-size:3em;
+  }
   .productCard > p {
     font-size: 1.7vmax;
   }

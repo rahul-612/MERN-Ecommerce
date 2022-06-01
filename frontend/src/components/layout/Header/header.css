@@ -323,4 +323,7 @@
     .rightUser{
       left: 59rem;
     }
+    .MuiSpeedDialAction-staticTooltipLabel {
+      padding: 4px 41px !important;
+    }
   }

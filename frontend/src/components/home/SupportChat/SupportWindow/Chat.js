@@ -11,8 +11,8 @@ let socket;
  
 // const ENDPOINT = "https://rahul612-realtime-chatapp.herokuapp.com/";    //ENDPOINT mtlb ye socket kaha se receive hona chaiye ie, server
 
-// const ENDPOINT="http://localhost:4000/"
-const ENDPOINT="https://mern-ecommerce-web-site.herokuapp.com/"
+const ENDPOINT="http://localhost:4000/"
+// const ENDPOINT="https://easybazaar.herokuapp.com/"
 
 
 const Chat = ({user}) => {

@@ -34,9 +34,9 @@ export const styles = {
         // Position
         position: 'fixed',
         bottom: '116px',
-        right: '24px',
+        right: '1.1rem',
         // Size
-        width: '420px',
+        width: '36.8rem',
         height: '430px',
         maxWidth: 'calc(100% - 48px)',
         maxHeight: 'calc(100% - 48px)',
@@ -88,7 +88,7 @@ export const styles = {
         fontWeight: '600' 
     },
     submitBtn:{
-        width:'10vw',
+        width:'25%',
         height:"5vh",
         fontSize:"1.5rem",
         backgroundColor:"tomato",
@@ -116,4 +116,5 @@ export const styles = {
         width: '100%',  
         backgroundColor: '#fff',
     }
+
 }

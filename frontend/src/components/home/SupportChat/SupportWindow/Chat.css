@@ -88,3 +88,18 @@
 .sendBtn:hover img{
     transform: translateX(10px);
 }
+
+@media screen and (max-width: 600px) {
+    .chatPage{
+        height:74vh !important;
+    }
+    .chatBox{
+        height:44%;
+    }
+    .inputBox{
+        height:9%;
+    }
+    #chatInput{
+        font-size:3vmax;
+    }
+}
