@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import "./home.css";
 import MouseIcon from '@mui/icons-material/Mouse';
 import ProductCard from "./ProductCard.js"
@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData"
 import { getProduct, clearErrors } from '../../actions/productAction';
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../Loader/Loader"
-import {useAlert} from "react-alert"
+import {useAlert} from "react-alert";
 import SupportEngine from "./SupportChat/SupportEngine"
 import Carousel from "react-material-ui-carousel";
 import banner1 from "../../images/banner/1.jpg"
