@@ -119,6 +119,9 @@
     .category-link {
       font: 400 1.8vmax "Roboto";
     }
+    .productsHeading{
+      width: 22vw;
+    }
   }
 
   @media screen and (min-width:600px){
@@ -126,6 +129,10 @@
   width: 85vw;
     margin: auto;
     transform: translateX(2vw);
+}
+.productsHeading{
+
+  width: 23vw;
 }
   }
   

@@ -127,7 +127,7 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <>
-          <MetaData title="PRODUCTS -- ECOMMERCE" />
+          <MetaData title="PRODUCTS" />
           <h3 className="speechlyText">
             {segment && segment.words.map((w) => w.value).join(" ")}
           </h3>

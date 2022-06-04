@@ -31,7 +31,8 @@ const About = () => {
               Visit Portfolio</a>
             </Button>
             <span>
-              This is a sample wesbite based on MERN stack made by Rahul Kumar.
+              This is an E-commerce final year LBSIM Project based on MERN stack made by Rahul Kumar under the supervision of <br/><i>Dr. Geetanjali Sahi
+  (Sr. Associate Professor)</i>.
             </span>
           </div>
           <div className="aboutSectionContainer2">

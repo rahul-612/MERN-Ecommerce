@@ -57,25 +57,24 @@ const ProductList = ({ history }) => {
     {
       field: "name",
       headerName: "Name",
-      minWidth: 350,
-      flex: 1,
+      minWidth: 200,
+      flex: 0.5,
     },
     {
       field: "stock",
       headerName: "Stock",
       type: "number",
-      minWidth: 150,
-      flex: 0.3,
+      minWidth: 140,
+      flex: 0.5,
     },
 
     {
       field: "price",
       headerName: "Price",
       type: "number",
-      minWidth: 270,
+      minWidth: 180,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
@@ -127,10 +126,11 @@ const ProductList = ({ history }) => {
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={10}
+            pageSize={8}
             disableSelectionOnClick
             className="productListTable"
             autoHeight
+            autoWidth
           />
         </div>
       </div>

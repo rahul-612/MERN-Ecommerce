@@ -92,5 +92,7 @@
       transform: translate(-2vw,3.4vh);
       width: 28vw;
     }
-    
+    .appStoreImg{
+      display: none;
+    }
   }

@@ -11,6 +11,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
+
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -56,6 +57,7 @@ const Sidebar = () => {
           Reviews
         </p>
       </Link>
+      
     </div>
   );
 };
