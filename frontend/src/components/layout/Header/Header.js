@@ -16,7 +16,7 @@ const Header = () => {
         <>
         <div className="leftHead flex">
           
-            <NavLink to="/" className="SiteLogo"><h1><span>E</span>asy-<span>Bazaar</span></h1></NavLink>
+            <NavLink to="/" className="SiteLogo"><h1><span>E</span>asy<span>-Bazaar</span></h1></NavLink>
           
           <ul>
             <li>
