@@ -9,13 +9,26 @@ const {
     getProductReviews,
     deleteReview,
     getAdminProducts,
+    getSellerProducts
   } = require("../controllers/productController");
-  const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
+  const { isAuthenticatedUser, authorizeRoles, } = require("../middleware/auth");
 
 
 const router=express.Router(); 
 
 router.route("/products").get(getAllProducts);
+router
+  .route("/seller/products")
+  .get(isAuthenticatedUser, authorizeRoles("seller"), getSellerProducts);
+
+  router.route("/seller/product/new").post(isAuthenticatedUser,authorizeRoles("seller"),createProduct);
+
+  
+router.route("/seller/product/:id")
+.put(isAuthenticatedUser,authorizeRoles("seller"),updateProduct)
+.delete(isAuthenticatedUser,authorizeRoles("seller"),deleteProduct)
+.get(getProductDetails)
+
 router
   .route("/admin/products")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts);

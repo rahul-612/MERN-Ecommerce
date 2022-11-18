@@ -3,6 +3,7 @@ const ErrorHandler = require("../utils/errorHandler")
 const catchAsyncErrors = require("../middleware/catchAsyncErrors")
 const ApiFeatures = require("../utils/apiFeatures")
 const cloudinary=require("cloudinary");
+const User = require("../models/userModel");
 
 //Create Product--Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
@@ -60,6 +61,16 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     productsCount,
     resultPerPage,
     filteredProductsCount,
+  });
+});
+
+// Get All Product (Seller)
+exports.getSellerProducts = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({user:req.user._id});
+  
+  res.status(200).json({
+    success: true,
+    products,
   });
 });
 

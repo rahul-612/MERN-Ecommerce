@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const {isAuthenticatedUser,authorizeRoles}=require("../middleware/auth");
-const {newOrder,getSingleOrder,myOrders,getAllOrders,updateOrder,deleteOrder}=require("../controllers/orderController");
+const {newOrder,getSingleOrder,myOrders,getAllOrders,getSellerAllOrders,updateOrder,deleteOrder}=require("../controllers/orderController");
 
 
 
@@ -9,6 +9,11 @@ const {newOrder,getSingleOrder,myOrders,getAllOrders,updateOrder,deleteOrder}=re
 router.route("/order/new").post(isAuthenticatedUser,newOrder);
 router.route("/order/:id").get(isAuthenticatedUser,getSingleOrder)
 router.route("/orders/me").get(isAuthenticatedUser,myOrders)
+
+
+router.route("/seller/orders").get(isAuthenticatedUser,authorizeRoles("seller"),getSellerAllOrders);
+router.route("/seller/order/:id").put(isAuthenticatedUser,authorizeRoles("seller"),updateOrder).delete(isAuthenticatedUser,authorizeRoles("seller"),deleteOrder)
+
 router.route("/admin/orders").get(isAuthenticatedUser,authorizeRoles("admin"),getAllOrders);
 router.route("/admin/order/:id").put(isAuthenticatedUser,authorizeRoles("admin"),updateOrder).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteOrder)
 

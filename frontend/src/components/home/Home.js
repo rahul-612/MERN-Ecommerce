@@ -76,7 +76,8 @@ const Home = () => {
                 </Carousel>
 
             <h2 className="homeHeading">Featured Products</h2>
-
+                
+            {/* Featured Products Container */}
             <div className="container" id="container">
 
                 {/* products && means agr product ha to */}

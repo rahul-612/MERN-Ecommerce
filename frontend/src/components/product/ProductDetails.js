@@ -24,6 +24,8 @@ import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
 const ProductDetails = ({match}) => {
 
+  // server me params.id se url m append hue id access kr skte h aur frontend me hum match.id se access kr skte h
+
     const dispatch = useDispatch();
   const alert = useAlert();
 

@@ -60,6 +60,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+// Google login
 exports.googleLogin = (req, res) => {
   const { tokenId } = req.body;
   const outerRes = res;

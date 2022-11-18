@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");      //crypto node ka build in module h to install ni krna pdta
+const crypto = require("crypto");      //built-in module
 
 const userSchema = new mongoose.Schema({
   name: {

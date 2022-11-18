@@ -4,6 +4,9 @@ import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
+  SELLER_PRODUCT_REQUEST,
+  SELLER_PRODUCT_SUCCESS,
+  SELLER_PRODUCT_FAIL,
   ADMIN_PRODUCT_REQUEST,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
@@ -59,6 +62,25 @@ export const getProduct =
   };
 
 
+// Get All Products For Seller
+export const getSellerProduct = () => async (dispatch) => {
+  try {
+    dispatch({ type: SELLER_PRODUCT_REQUEST });
+
+    const { data } = await axios.get("/api/v1/seller/products");
+
+    dispatch({
+      type: SELLER_PRODUCT_SUCCESS,
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: SELLER_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // Get All Products For Admin
 export const getAdminProduct = () => async (dispatch) => {
   try {
@@ -89,7 +111,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/admin/product/new`,
+      `/api/v1/seller/product/new`,
       productData,
       config
     );
@@ -101,6 +123,33 @@ export const createProduct = (productData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: NEW_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Update Product (Seller)
+export const updateSellerProduct = (id, productData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PRODUCT_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.put(
+      `/api/v1/seller/product/${id}`,
+      productData,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_PRODUCT_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

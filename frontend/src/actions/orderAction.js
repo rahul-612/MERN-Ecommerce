@@ -59,6 +59,22 @@ import {
     }
   };
   
+// Get All Orders (seller)
+export const getSellerAllOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ORDERS_REQUEST });
+
+    const { data } = await axios.get("/api/v1/seller/orders");
+
+    dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
+  } catch (error) {
+    dispatch({
+      type: ALL_ORDERS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
   // Get All Orders (admin)
   export const getAllOrders = () => async (dispatch) => {
     try {

@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 // component app.js se aa rha h aur rest wo saare properties hoge jaise exact & path
 
-const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
+const ProtectedRoute = ({ isAdmin, isSeller,component: Component, ...rest }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
   return (
@@ -20,7 +20,9 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
             if (isAdmin === true && user.role !== "admin") {
               return <Redirect to="/login" />;
             }
-
+            if (isSeller === true && user.role !== "seller") {
+              return <Redirect to="/login" />;
+            }
             return <Component {...props} />;
           }}
         />

@@ -8,6 +8,7 @@ const path=require("path");
 
 
 // Config
+// ye kvl development me hi chlega kuki production me heroku wo khud environment manage krta ha
 if(process.env.NODE_ENV!=="PRODUCTION"){
     require("dotenv").config({path:"backend/config/config.env"});
 }
@@ -35,8 +36,10 @@ app.use("/api/v1",user);
 app.use("/api/v1",order);
 app.use("/api/v1",payment);
 
+// serving build folder
 app.use(express.static(path.join(__dirname,"../frontend/build")));
 
+// yani koi bhi url ho hume uspe sirf ek hi file chalani h
 app.get("*",(req,res)=>{
     res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"))
 })

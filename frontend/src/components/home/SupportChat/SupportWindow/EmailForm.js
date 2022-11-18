@@ -16,7 +16,7 @@ const EmailForm = props => {
         //     setLoading(false)
             
         // }, 10000);
-        console.log("hey chat")
+        // console.log("hey chat")
         showSetForm(false)
         // showSetChat(true)
         
