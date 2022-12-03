@@ -18,6 +18,7 @@ jobs:
           CI: true
       
       deploy:
+      - name: AWS SSM Send Command
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v3
