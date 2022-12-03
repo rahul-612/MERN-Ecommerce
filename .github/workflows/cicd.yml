@@ -1,0 +1,35 @@
+name: easy-bazaar application
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: 16
+      - name: npm install
+        run: |
+          npm install
+        env: 
+          CI: true
+      
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+			    - uses: peterkimzz/aws-ssm-send-command@1.0.1
+			  with:
+			  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
+			  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
+			  aws-region: ap-south-1a
+			  instance-ids: ${{ secrets.INSTANCE_ID  }}
+			  comment: Deploy the master branch
+			  working-directory: /home/ubuntu/MERN-Ecommerce
+			  command: /bin/sh ./deploy.sh
+
+
+      
