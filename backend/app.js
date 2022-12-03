@@ -9,9 +9,10 @@ const path=require("path");
 
 // Config
 // ye kvl development me hi chlega kuki production me heroku wo khud environment manage krta ha
-if(process.env.NODE_ENV!=="PRODUCTION"){
-    require("dotenv").config({path:"backend/config/config.env"});
-}
+// if(process.env.NODE_ENV!=="PRODUCTION"){
+//     require("dotenv").config({path:"backend/config/config.env"});
+// }
+require("dotenv").config({path:"backend/config/config.env"});
 
 
 
