@@ -46,7 +46,7 @@ jobs:
               npm install
               cd frontend
               npm install
-              npm run build
+              node --max-old-space-size=4096 react-scripts build
               cd ..
               cd backend
               pm2 restart server.js     
