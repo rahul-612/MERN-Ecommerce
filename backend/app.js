@@ -15,6 +15,8 @@ const path=require("path");
 require("dotenv").config({path:"backend/config/config.env"});
 
 
+//test cicd
+console.log("test cicd");
 
 app.use(express.json());
 app.use(cookieParser())
