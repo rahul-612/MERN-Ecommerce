@@ -39,6 +39,7 @@ jobs:
           port: ${{secrets.PORT}}
 
           script: |
+              cd MERN-Ecommerce
               git reset --hard
               git pull
               npm install
