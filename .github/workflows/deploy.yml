@@ -40,9 +40,9 @@ jobs:
 
           script: |
               cd MERN-Ecommerce
-              git stash
-              git stash drop
-              git pull
+              git fetch origin master
+              git commit -m "updated app"
+              git merge origin master
               npm install
               cd frontend
               npm install
