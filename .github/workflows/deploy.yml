@@ -46,7 +46,7 @@ jobs:
 
           script: |
               cd MERN-Ecommerce
-              git pull --rebase origin/master 
+              git pull --rebase origin master 
               npm install
               cd frontend
               npm install
