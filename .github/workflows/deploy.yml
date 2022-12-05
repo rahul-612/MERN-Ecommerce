@@ -23,7 +23,6 @@ jobs:
           cd frontend
           npm install
           npm run build
-          cd ..
 
         env:
           CI: true
@@ -49,7 +48,6 @@ jobs:
               npm install
               cd frontend
               npm install
-              npm run build
               cd ..
               cd backend
               pm2 restart server.js     
