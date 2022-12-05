@@ -24,7 +24,6 @@ jobs:
           cd frontend
           node --max-old-space-size=4096 react-scripts build
           npm install
-          npm run build
           cd ..
 
         env:
