@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     startegy:
       matrix:
-        node-version: [16.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -45,14 +45,14 @@ jobs:
           script: |
               sudo curl https://gist.githubusercontent.com/cornflourblue/f0abd30f47d96d6ff127fe8a9e5bbd9f/raw/e3047c9dc3ce8b796e7354c92d2c47ce61981d2f/setup-nodejs-mongodb-production-server-on-ubuntu-1804.sh | sudo bash
 
-             sudo nvm install 16
-             sudo npm install -g pm2
+             sudo apt install npm
+             npm install -g pm2
              sudo git pull origin main
              cd MERN-Ecommerce
              sudo npm install
              cd frontend
-             sudo npm install
-             sudo npm run build
+             npm install
+             npm run build
              cd ..
              cd backend
-             sudo pm2 restart server.js     
+             pm2 restart server.js     
