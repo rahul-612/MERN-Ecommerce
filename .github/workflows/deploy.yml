@@ -23,6 +23,9 @@ jobs:
           cd frontend
           npm install
           npm run build
+          git config --global.user rahul
+          git commit -m "build updated"
+          git push origin master
 
         env:
           CI: true
