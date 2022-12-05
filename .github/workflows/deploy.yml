@@ -46,9 +46,10 @@ jobs:
 
           script: |
               cd MERN-Ecommerce
-              git fetch origin master
-              git commit -m "updated app"
-              git merge origin master
+              git fetch origin master:tmp
+              git rebase tmp
+              git push origin HEAD:master
+              git branch -D tmp
               npm install
               cd frontend
               npm install
