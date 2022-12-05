@@ -43,10 +43,8 @@ jobs:
               git fetch origin master
               git commit -m "updated app"
               git merge origin master
-              npm audit fix --force
               npm install
               cd frontend
-              npm audit fix --force
               npm install
               node --max-old-space-size=4096 react-scripts build
               cd ..
