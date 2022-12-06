@@ -53,7 +53,7 @@ jobs:
               # git branch -D tmp
               git checkout -b local
               git branch
-              git pull origin xyz
+              git pull origin master
               npm install
               cd frontend
               npm install
