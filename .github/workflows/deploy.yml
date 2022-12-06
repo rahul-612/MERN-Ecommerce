@@ -51,10 +51,9 @@ jobs:
               # git rebase tmp
               # git push origin HEAD:master
               # git branch -D tmp
-              git status
-              git add .
-              git commit -m "updated app"
-              git pull origin master
+              git checkout -b local
+              git branch
+              git pull origin xyz
               npm install
               cd frontend
               npm install
