@@ -67,8 +67,8 @@ const App = () => {
     store.dispatch(loadUser());
     
     getStripeApiKey()
-    console.log(user)
-    console.log(user.email)
+    // console.log(user)
+    // console.log(user.email)
   }, []);
 
 

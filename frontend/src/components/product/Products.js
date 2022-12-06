@@ -10,9 +10,12 @@ import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
 import {
+  // PushToTalkButton,
+  // PushToTalkButtonContainer,
+  // ErrorPanel,
   PushToTalkButton,
-  PushToTalkButtonContainer,
-  ErrorPanel,
+  BigTranscript,
+  IntroPopup,
 } from "@speechly/react-ui";
 import { useSpeechContext } from "@speechly/react-client";
 import { useHistory } from "react-router-dom";
@@ -43,7 +46,6 @@ const Products = ({ match }) => {
   const {
     products,
     loading,
-
     productsCount,
     resultPerPage,
     filteredProductsCount,
@@ -128,9 +130,10 @@ const Products = ({ match }) => {
       ) : (
         <>
           <MetaData title="PRODUCTS" />
-          <h3 className="speechlyText">
+          {/* manual code of user voice text! which is not require now because speechly introduced BigTranscript component */}
+          {/* <h3 className="speechlyText">
             {segment && segment.words.map((w) => w.value).join(" ")}
-          </h3>
+          </h3> */}
           <h2 className="productsHeading"> Products</h2>
 
           <div className="products">
@@ -139,10 +142,13 @@ const Products = ({ match }) => {
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
-          <PushToTalkButtonContainer>
+          {/* <PushToTalkButtonContainer>
             <PushToTalkButton />
             <ErrorPanel />
-          </PushToTalkButtonContainer>
+          </PushToTalkButtonContainer> */}
+          <BigTranscript placement="top" fontSize="2rem"/>
+          <PushToTalkButton placement="bottom" captureKey=" " />
+          <IntroPopup/>
           <div className="filterBox">
             <Typography>Price</Typography>
             <Slider
