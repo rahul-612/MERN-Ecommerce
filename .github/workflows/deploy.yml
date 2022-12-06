@@ -27,6 +27,7 @@ jobs:
           git add build
           git commit -m "build updated"
           git push origin master
+          git pull origin master
 
         env:
           CI: true
