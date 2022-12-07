@@ -52,9 +52,9 @@ jobs:
               # git rebase tmp
               # git push origin HEAD:master
               # git branch -D tmp
-              git status
-              git add .
-              git commit -m "updated"
+              # git status
+              # git add .
+              # git commit -m "updated"
               git pull origin master
                
               npm install
