@@ -15,14 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use node js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: ${{matrix.node-version}}
       - name: npm install and build
         run:  |
           cd frontend
           npm install
-          npm run build
+          # npm run build
           # git config --global user.name "rahul"
           # git add build
           # git commit -m "build updated"
