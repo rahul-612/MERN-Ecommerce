@@ -59,7 +59,7 @@ jobs:
                
               npm install
               cd frontend
-              # npm install
+              npm install
               cd ..
               cd backend
               pm2 restart server.js     
