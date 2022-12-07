@@ -23,7 +23,7 @@ jobs:
           npm install
           cd frontend
           npm install
-          # npm run build
+          npm run build
           # git config --global user.name "rahul"
           # git add build
           # git commit -m "build updated"

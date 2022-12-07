@@ -75,7 +75,7 @@ const Home = () => {
                     }
                 </Carousel>
 
-            <h2 className="homeHeading">Featured test1</h2>
+            <h2 className="homeHeading">Featured Products</h2>
                 
             {/* Featured Products Container */}
             <div className="container" id="container">
