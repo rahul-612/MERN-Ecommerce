@@ -20,6 +20,7 @@ jobs:
           node-version: ${{matrix.node-version}}
       - name: npm install and build
         run:  |
+          npm install
           cd frontend
           npm install
           # npm run build
@@ -58,7 +59,7 @@ jobs:
                
               npm install
               cd frontend
-              npm install
+              # npm install
               cd ..
               cd backend
               pm2 restart server.js     
