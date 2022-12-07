@@ -23,10 +23,10 @@ jobs:
           cd frontend
           npm install
           npm run build
-          # git config --global user.name "rahul"
-          # git add build
-          # git commit -m "build updated"
-          # git push origin master
+          git config --global user.name "rahul"
+          git add build
+          git commit -m "build updated"
+          git push origin master -f
           # git pull origin master
 
         env:
