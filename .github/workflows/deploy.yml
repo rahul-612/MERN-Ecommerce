@@ -27,7 +27,7 @@ jobs:
           git add build
           git commit -m "build updated"
           git push origin master
-          git pull origin master
+          # git pull origin master
 
         env:
           CI: true
@@ -47,10 +47,13 @@ jobs:
 
           script: |
               cd MERN-Ecommerce
-              git fetch origin master:tmp
-              git rebase tmp
-              git push origin HEAD:master
-              git branch -D tmp
+              # git fetch origin master:tmp
+              # git rebase tmp
+              # git push origin HEAD:master
+              # git branch -D tmp
+              git fetch
+              git reset --hard HEAD
+              git merge '@{u}'
               npm install
               cd frontend
               npm install
