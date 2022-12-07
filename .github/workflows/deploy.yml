@@ -22,11 +22,11 @@ jobs:
         run:  |
           cd frontend
           npm install
-          npm run build
-          git config --global user.name "rahul"
-          git add build
-          git commit -m "build updated"
-          git push origin master
+          # npm run build
+          # git config --global user.name "rahul"
+          # git add build
+          # git commit -m "build updated"
+          # git push origin master
           # git pull origin master
 
         env:
@@ -51,9 +51,11 @@ jobs:
               # git rebase tmp
               # git push origin HEAD:master
               # git branch -D tmp
-              git fetch
-              git reset --hard HEAD
-              git merge '@{u}'
+              git status
+              git add .
+              git commit -m "updated"
+              git pull origin master
+               
               npm install
               cd frontend
               npm install
