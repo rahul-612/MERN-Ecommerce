@@ -50,7 +50,9 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   let products = await apiFeature.query;
 
   let filteredProductsCount = products.length;
-  if(Number.isInteger(req.body.currentPage))
+
+// if request comming from mobile app don't do pagination
+  if(req.query.page!='false')
   {
   apiFeature.pagination(resultPerPage);
   }
