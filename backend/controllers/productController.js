@@ -40,7 +40,10 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Product
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
+  if(Number.isInteger(req.body.currentPage))
+  {
+    const resultPerPage = 8;
+  }
   const productsCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
@@ -50,9 +53,10 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   let products = await apiFeature.query;
 
   let filteredProductsCount = products.length;
-
+  if(Number.isInteger(req.body.currentPage))
+  {
   apiFeature.pagination(resultPerPage);
-
+  }
   products = await apiFeature.query.clone();
 
   res.status(200).json({
