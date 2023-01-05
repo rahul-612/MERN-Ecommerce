@@ -18,8 +18,8 @@ const client = new OAuth2Client(
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const { name, email, password, } = req.body;
   var {avatar}=req.body;
-
-  // console.log(typeof req.body.avatar)
+console.log('hey')
+  console.log(typeof req.body.avatar)
   if(req.body.mobile_native=='true'){
     avatar = req.files.avatar.tempFilePath;
   }
@@ -45,7 +45,7 @@ const myCloud = await cloudinary.v2.uploader.upload(avatar, {
       url: myCloud.secure_url,
     },
   });
-  
+
   sendToken(user, 201, res);
 });
 

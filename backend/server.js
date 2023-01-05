@@ -2,7 +2,7 @@ const app=require("./app");
 const connectDatabase=require("./config/conn")
 const cloudinary = require("cloudinary");
  const chatServer= require ("./chatServer.js");
-
+ const fileUpload =require("express-fileupload");
 
 //Handling the caught exceptions like console.log(youtube);
 process.on("uncaughtException",(err)=>{
@@ -24,6 +24,13 @@ process.on("uncaughtException",(err)=>{
 
 //Connecting to database
 connectDatabase();
+
+app.use(
+    fileUpload({
+      limits: { fileSize: 50 * 1024 * 1024 },
+      useTempFiles: true,
+    })
+  );
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
