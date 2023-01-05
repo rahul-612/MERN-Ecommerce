@@ -54,13 +54,15 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
+    myForm.set("mobile_native", false);
+    // console.log(myForm.set);
     dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
     if (e.target.name === "avatar") {
       const reader = new FileReader();
-
+    
       // readyState k 3 states hote h 0-for unreachable, 1-processing & 2-done
 
       reader.onload = () => {
@@ -69,7 +71,7 @@ const LoginSignUp = ({ history, location }) => {
           setAvatar(reader.result);
         }
       };
-
+     
       reader.readAsDataURL(e.target.files[0]);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
