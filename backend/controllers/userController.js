@@ -17,25 +17,13 @@ const client = new OAuth2Client(
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const { name, email, password, } = req.body;
-  var {avatar}=req.body;
-console.log('hey')
-  console.log(typeof req.body.avatar)
-  if(req.body.mobile_native=='true'){
-    avatar = req.files.avatar.tempFilePath;
-  }
   
-const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
   folder: "avatars",
   width: 150,
   crop: "scale",
 });
  
-
-  if(req.body.mobile_native=='true'){
-    fs.rmSync("./tmp", { recursive: true });
-  }
-  
-
   const user = await User.create({
     name,
     email,
@@ -47,6 +35,42 @@ const myCloud = await cloudinary.v2.uploader.upload(avatar, {
   });
 
   sendToken(user, 201, res);
+});
+
+// Register a Mobile User
+exports.registerMobileUser = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const avatar = req.files.avatar.tempFilePath;   
+
+    let user = await User.findOne({ email });
+
+    if (user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
+    }
+
+    const mycloud = await cloudinary.v2.uploader.upload(avatar);
+
+    fs.rmSync("./tmp", { recursive: true });
+   
+    user = await User.create({
+      name,
+      email,
+      password,
+         avatar: {
+        public_id:mycloud.public_id,
+        url: mycloud.secure_url,
+      },
+      
+    });
+    sendToken(user, 201, res);
+
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 });
 
 //Login User

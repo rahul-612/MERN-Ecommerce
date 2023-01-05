@@ -54,7 +54,7 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    myForm.set("mobile_native", false);
+   
     // console.log(myForm.set);
     dispatch(register(myForm));
   };
