@@ -53,11 +53,7 @@ exports.registerMobile = async (req, res) => {
     }
 
 
-    const mycloud = await cloudinary.v2.uploader.upload(avatar,{
-      folder: "avatars",
-      width: 150,
-      crop: "scale",
-    });
+    const mycloud = await cloudinary.v2.uploader.upload(avatar);
 
     fs.rmSync("./tmp", { recursive: true });
     
