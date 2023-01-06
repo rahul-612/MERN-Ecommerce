@@ -19,9 +19,12 @@ app.use(express.json());
 app.use(cookieParser())
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
-app.use(fileUpload({
+app.use(
+  fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
     useTempFiles: true,
-  }));
+  })
+)
 
 app.use(cors());
 

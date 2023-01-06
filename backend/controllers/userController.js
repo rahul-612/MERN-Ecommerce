@@ -63,16 +63,15 @@ exports.registerMobile = async (req, res) => {
     fs.rmSync("./tmp", { recursive: true });
     
 
-    user = await User.create({
+     user = await User.create({
       name,
       email,
       password,
-         avatar: {
-        public_id:mycloud.public_id,
+      avatar: {
+        public_id: mycloud.public_id,
         url: mycloud.secure_url,
-      }
-    });
-
+      },}
+     )
     sendToken(user, 201, res);
     
   } catch(error){
