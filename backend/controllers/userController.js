@@ -38,19 +38,18 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Register Mobile User
-exports.registerMobile = async (req, res) => {
-  try {
+exports.registerMobile = catchAsyncErrors(async (req, res) => {
     const { name, email, password } = req.body;
+    console.log(req.files.avatar.tempFilePath)
 
     const avatar = req.files.avatar.tempFilePath;  
+    // let user = await User.findOne({ email });
 
-    let user = await User.findOne({ email });
-
-    if (user) {
-      return res
-        .status(400)
-        .json({ success: false, message: "User already exists" });
-    }
+    // if (user) {
+    //   return res
+    //     .status(400)
+    //     .json({ success: false, message: "User already exists" });
+    // }
 
 
     const mycloud = await cloudinary.v2.uploader.upload(avatar);
@@ -70,11 +69,8 @@ exports.registerMobile = async (req, res) => {
 
     sendToken(user, 201, res);
     
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
+  } 
+)
 
 //Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {

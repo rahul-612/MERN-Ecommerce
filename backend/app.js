@@ -5,7 +5,7 @@ const cookieParser=require("cookie-parser");
 const bodyParser=require("body-parser");
 const fileUpload = require("express-fileupload");
 const path=require("path");
-
+const cors=require("cors");
 
 // Config
 // ye kvl development me hi chlega kuki production me heroku wo khud environment manage krta ha
@@ -22,7 +22,7 @@ app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
     useTempFiles: true,
   }));
-
+  app.use(cors());
 
 
 //Route Imports
