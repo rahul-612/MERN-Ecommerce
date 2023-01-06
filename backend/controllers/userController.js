@@ -8,7 +8,7 @@ const cloudinary = require("cloudinary");
 const { OAuth2Client } = require("google-auth-library");
 const { response } = require("express");
 const jwt = require("jsonwebtoken");
-const fs =require ("fs");
+const fs=require("fs");
 
 const client = new OAuth2Client(
   "25285888699-qrhehvheurj30nu939f0ju44nv61gqm4.apps.googleusercontent.com"
@@ -16,14 +16,14 @@ const client = new OAuth2Client(
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const { name, email, password, } = req.body;
-  
-const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  folder: "avatars",
-  width: 150,
-  crop: "scale",
-});
- 
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
+
+  const { name, email, password } = req.body;
+
   const user = await User.create({
     name,
     email,
@@ -37,7 +37,7 @@ const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
   sendToken(user, 201, res);
 });
 
-// Register a Mobile User
+//Register Mobile User
 exports.registerMobile = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -52,7 +52,6 @@ exports.registerMobile = async (req, res) => {
         .json({ success: false, message: "User already exists" });
     }
 
-    
 
     const mycloud = await cloudinary.v2.uploader.upload(avatar,{
       folder: "avatars",
@@ -61,7 +60,7 @@ exports.registerMobile = async (req, res) => {
     });
 
     fs.rmSync("./tmp", { recursive: true });
-   
+    
 
     user = await User.create({
       name,
@@ -70,12 +69,11 @@ exports.registerMobile = async (req, res) => {
          avatar: {
         public_id:mycloud.public_id,
         url: mycloud.secure_url,
-      },
-      
+      }
     });
 
     sendToken(user, 201, res);
-
+    
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
