@@ -52,7 +52,11 @@ exports.registerMobile = catchAsyncErrors(async (req, res) => {
     // }
 
 
-    const mycloud = await cloudinary.v2.uploader.upload(avatar);
+    const mycloud = await cloudinary.v2.uploader.upload(avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
 
     fs.rmSync("./tmp", { recursive: true });
     
