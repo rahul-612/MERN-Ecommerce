@@ -38,7 +38,7 @@ const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
 });
 
 // Register a Mobile User
-export const registerMobile = async (req, res) => {
+exports.registerMobile = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
