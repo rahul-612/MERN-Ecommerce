@@ -41,7 +41,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 exports.registerMobile = async (req, res) => {
   try{
     const { name, email, password } = req.body;
-    
+// console.log('mobile')    
     const avatar = req.files.avatar.tempFilePath;
     // console.log(req.files.avatar.tempFilePath)  
       const mycloud = await cloudinary.v2.uploader.upload(avatar, {
@@ -58,11 +58,11 @@ exports.registerMobile = async (req, res) => {
         .json({ success: false, message: "User already exists" });
     }
 
-
+// console.log('second')
 
     fs.rmSync("./tmp", { recursive: true });
     
-
+    // console.log('third')
      user = await User.create({
       name,
       email,
@@ -72,6 +72,7 @@ exports.registerMobile = async (req, res) => {
         url: mycloud.secure_url,
       },}
      )
+    //  console.log('fourth')
     sendToken(user, 201, res);
     
   } catch(error){
